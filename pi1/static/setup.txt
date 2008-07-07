@@ -1,0 +1,108 @@
+plugin.tx_rtgfiles_pi1 {
+  template = EXT:rtg_files/pi1/template_2.html
+  pidrootpage =
+  recursive =
+  limit = 20
+  iconsUploadPath = typo3/gfx/fileicons/
+
+  description_stdWrap.parseFunc < lib.parseFunc_RTE
+  tstamp_stdWrap.date = d.m.Y H:i
+  size_stdWrap =%01.1f (%s)
+
+  pagetree =
+  wrapErrorMessages = <font color="red"><strong>|</strong></font><br />
+  types {
+    pdf {
+      title = PDF dokument
+      image = pdf.gif
+    } 
+    doc {
+      title = MS Word dokument
+      image = doc.gif
+    } 
+    xls {
+      title = MS Excel
+      image = xls.gif
+    } 
+    rtf {
+      title = Rich Text Format
+      image = rtf.gif
+    } 
+    jpg {
+      title = Obrázok JPEG
+      image = jpg.gif
+    } 
+    gif {
+      title = Obrázok GIF
+      image = gif.gif
+    } 
+    png {
+      title = Obrázok PNG
+      image = png.gif
+    } 
+    bmp {
+      title = Obrázok BMP
+      image = bmp.gif
+    } 
+    swf {
+      title = Flash animácia
+      image = swf.gif
+    } 
+    ppt {
+      title = PowerPoint Prezentácia
+      image = ppt.gif
+    } 
+    pps {
+      title = PowerPoint Show
+      image = pps.gif
+    } 
+    html {
+      title = Webová stránka
+      image = html.gif
+    } 
+    t3d {
+      title = Typo3
+      image = t3d.gif
+    } 
+    t3x {
+      title = Typo3 extension
+      image = t3x.gif
+    } 
+    sxw {
+      title = OpenOffice dokument
+      image = sxw.gif
+    } 
+    odt {
+      title = OpenOffice dokument (Open Document)
+      image = sxw.gif
+    } 
+    xml {
+      title = XML file
+      image = xml.gif
+    } 
+    ser {
+      title = Language translation XML/SER
+      image = xml.gif
+    } 
+    zip {
+      title = Koprimovaný súbor ZIP
+      image = zip.gif
+    }
+    psd {
+      title = Adobe Photoshop
+      image = psd.gif
+    }     
+    php {
+      title = PHP source
+      image = php3.gif
+    }     
+    inc {
+      title = PHP source
+      image = php3.gif
+    }     
+    txt {
+      title = Plain text 
+      image = txt.gif
+    }     
+  }	
+}

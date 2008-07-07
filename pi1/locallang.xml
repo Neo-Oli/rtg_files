@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<T3locallang>
+	<meta type="array">
+		<type>module</type>
+		<description>Language labels for plugin &quot;tx_rtgfiles_pi1&quot;</description>
+	</meta>
+	<data type="array">
+		<languageKey index="default" type="array">
+			<label index="submit_title">Search word</label>
+			<label index="submit_button_label">Search</label>
+			<label index="error_word">Search word must include min two characters.</label>
+			<label index="empty_list">No files.</label>
+			<label index="tx_rtgfiles_files">Files</label>
+			<label index="tx_rtgfiles_files.date">Upload date</label>
+			<label index="tx_rtgfiles_files.title">Title</label>
+			<label index="tx_rtgfiles_files.system">System</label>
+			<label index="tx_rtgfiles_files.description">Description</label>
+			<label index="tx_rtgfiles_files.keywords">Keywords</label>
+			<label index="tx_rtgfiles_files.file">Filename</label>
+			<label index="tx_rtgfiles_files.size">File size</label>
+			<label index="tx_rtgfiles_files.size_unknown">unknown</label>
+			<label index="tx_rtgfiles_files.url">External URL</label>
+			<label index="tx_rtgfiles_files.clicks">Downloads</label>
+			<label index="tx_rtgfiles_systems">Systems</label>
+			<label index="tx_rtgfiles_systems.title">Title</label>
+			<label index="tx_rtgfiles_systems.description">Description</label>
+			<label index="tt_content.list_type_pi1">Documents</label>
+		</languageKey>
+		<languageKey index="sk" type="array">
+			<label index="submit_title">Hľadaný výraz</label>
+			<label index="submit_button_label">Hľadaj</label>
+			<label index="error_word">Výraz musí mať minimálne dva znaky.</label>
+			<label index="empty_list">Žiadne dokumenty ani odkazy k tejto stránke.</label>
+			<label index="tx_rtgfiles_files">Dokumenty</label>
+			<label index="tx_rtgfiles_files.date">Dátum zverejnenia</label>
+			<label index="tx_rtgfiles_files.title">Názov</label>
+			<label index="tx_rtgfiles_files.system">Systém</label>
+			<label index="tx_rtgfiles_files.description">Popis</label>
+			<label index="tx_rtgfiles_files.keywords">Kľúčové slová</label>
+			<label index="tx_rtgfiles_files.file">Názov súbor</label>
+			<label index="tx_rtgfiles_files.size">Veľkosť</label>
+			<label index="tx_rtgfiles_files.size_unknown">neurčená</label>
+			<label index="tx_rtgfiles_files.url">Externá URL</label>
+			<label index="tx_rtgfiles_files.clicks">Počet stiahnutí</label>
+			<label index="tx_rtgfiles_systems">Systémy</label>
+			<label index="tx_rtgfiles_systems.title">Názov</label>
+			<label index="tx_rtgfiles_systems.description">Popis</label>
+			<label index="tt_content.list_type_pi1">Dokumenty</label>
+		</languageKey>
+	</data>
+</T3locallang>

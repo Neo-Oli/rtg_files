@@ -1,0 +1,37 @@
+	<!-- ###FILES_LIST### begin -->
+
+		<form action="###URL###" id="formSearchFile" method="post">
+			<fieldset>
+				###WORD_ERROR###
+				<label for="idWord">Hľadaný výraz</label>
+				<input type="text" id="idWord" size="20" name="tx_rtgfiles_pi1[word]" value="###WORD_VALUE###" />
+				###HIDDEN###
+				<input type="submit" id="submitSearchFile" name="submit" value="Hľadaj" />
+			</fieldset>
+		</form>
+		
+		<div>###PAGETREE###</div>
+
+		<table class="noBorder" width="757"><tbody>
+			<tr>
+				<td class="lineTop" width="25">&nbsp;</td>
+				<td class="lineTop" colspan="2"></td>
+			</tr>
+			<!-- ###FILES_LIST_ITEM### begin -->
+				<tr>
+					<td class="lineBottom">###TYPE_IMAGE###</td>
+					<td colspan="2" class="lineBottom"><!-- ###FILE_LINK### -->###TITLE###<!-- ###FILE_LINK### --></td>
+				</tr>
+				<tr>
+					<td></td>
+					<td colspan="2" class="fileDescription">###DESCRIPTION###</td>
+				</tr>
+				<tr>
+					<td></td>
+					<td class="lineTop"><strong>Veľkosť:</strong> ###SIZE###</td>
+					<td class="lineTop fileName"><strong>Názov súboru:</strong> <!-- ###FILE_LINK### -->###FILE_NAME###<!-- ###FILE_LINK### --></td>
+				</tr>
+			<!-- ###FILES_LIST_ITEM### begin -->
+		</tbody></table>
+
+	<!-- ###FILES_LIST### end -->

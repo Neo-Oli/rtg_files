@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<T3locallang>
+	<meta type="array">
+		<type>database</type>
+		<description>Language labels for database tables/fields belonging to extension 'rtg_files'</description>
+	</meta>
+	<data type="array">
+		<languageKey index="default" type="array">
+			<label index="tx_rtgfiles_files">Files</label>
+			<label index="tx_rtgfiles_files.title">Title</label>
+			<label index="tx_rtgfiles_files.system">System</label>
+			<label index="tx_rtgfiles_files.description">Description</label>
+			<label index="tx_rtgfiles_files.keywords">Keywords</label>
+			<label index="tx_rtgfiles_files.file">File</label>
+			<label index="tx_rtgfiles_files.url">External URL</label>
+			<label index="tx_rtgfiles_files.clicks">Downloads</label>
+			<label index="tx_rtgfiles_systems">Systems</label>
+			<label index="tx_rtgfiles_systems.title">Title</label>
+			<label index="tx_rtgfiles_systems.description">Description</label>
+			<label index="tt_content.list_type_pi1">Documents</label>
+		</languageKey>
+		<languageKey index="sk" type="array">
+			<label index="tx_rtgfiles_files">Dokumenty</label>
+			<label index="tx_rtgfiles_files.title">Názov</label>
+			<label index="tx_rtgfiles_files.system">Systém</label>
+			<label index="tx_rtgfiles_files.description">Popis</label>
+			<label index="tx_rtgfiles_files.keywords">Kľúčové slová</label>
+			<label index="tx_rtgfiles_files.file">Súbor</label>
+			<label index="tx_rtgfiles_files.url">Externá URL</label>
+			<label index="tx_rtgfiles_files.clicks">Počet stiahnutí</label>
+			<label index="tx_rtgfiles_systems">Systémy</label>
+			<label index="tx_rtgfiles_systems.title">Názov</label>
+			<label index="tx_rtgfiles_systems.description">Popis</label>
+			<label index="tt_content.list_type_pi1">Dokumenty</label>
+		</languageKey>
+	</data>
+</T3locallang>

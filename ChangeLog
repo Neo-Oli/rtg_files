@@ -1,0 +1,52 @@
+30-04-08 robert gonda  <gonda.robert@google.com>
+
+	* Add any MIME types
+	* Small code optimize
+
+25-04-08 robert gonda  <gonda.robert@google.com>
+
+	* Update documentation
+
+18-04-08 robert gonda  <gonda.robert@google.com>
+
+	* Bugfix in download function
+
+13-04-08 robert gonda  <gonda.robert@google.com>
+
+	* View file downloads counter in frontend
+	* Add statistics for external URL
+
+09-04-08 robert gonda  <gonda.robert@google.com>
+
+	* Add download files by MIME type
+	* Add file downloads counter
+	* Example: http://server.magnetica.sk/robert/index.php?id=101
+	
+08-03-07 robert gonda  <gonda.robert@google.com>
+
+	* Any bugs fixed
+	* Add use Typo3 DB functions
+	* Add multilang fields titles in HTML template (EN and SK)
+
+08-03-06 robert gonda  <gonda.robert@google.com>
+
+	* Add simple manual.sxw
+
+08-03-02 robert gonda  <gonda.robert@google.com>
+
+	* Update HTML template
+	* Update static setup typoscript
+	* Render tstamp in LIST view
+
+08-02-09 robert gonda  <gonda.robert@google.com>
+
+	* Add extension icons
+	* Add static setup typoscript
+
+07-08-09 robert gonda  <gonda.robert@google.com>
+
+	* Update file extension getting for icon image select
+
+07-04-02 robert gonda  <robert@magnetica.sk>
+
+	* Initial release
