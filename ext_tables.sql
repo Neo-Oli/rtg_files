@@ -10,6 +10,7 @@ CREATE TABLE tx_rtgfiles_files (
 	sorting int(10) DEFAULT '0' NOT NULL,
 	deleted tinyint(4) DEFAULT '0' NOT NULL,
 	hidden tinyint(4) DEFAULT '0' NOT NULL,
+	fe_group varchar(100) DEFAULT '0' NOT NULL,
 	title varchar(255) DEFAULT '' NOT NULL,
 	system int(11) DEFAULT '0' NOT NULL,
 	description text NOT NULL,

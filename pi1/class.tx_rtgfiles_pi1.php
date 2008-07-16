@@ -31,10 +31,10 @@
  *   56: class tx_rtgfiles_pi1 extends tslib_pibase
  *   82:     function main( $content,$conf )
  *  135:     function download( $uid )
- *  193:     function getFiles()
- *  231:     function getSystems()
- *  264:     function sizeReadable( $size, $unit = null, $retstring = null, $si = true )
- *  302:     function parseTemplate( $subpart )
+ *  199:     function getFiles()
+ *  236:     function getSystems()
+ *  269:     function sizeReadable( $size, $unit = null, $retstring = null, $si = true )
+ *  307:     function parseTemplate( $subpart )
  *
  * TOTAL FUNCTIONS: 6
  * (This index is automatically created/updated by the extension "extdeveval")
@@ -134,7 +134,8 @@ class tx_rtgfiles_pi1 extends tslib_pibase {
 	 */
 	function download( $uid ) {
 
-		$res = $GLOBALS['TYPO3_DB']->exec_SELECTquery( 'uid,file,url,clicks', 'tx_rtgfiles_files', 'uid = '.$uid );
+		$where = 'uid = '.$uid.' '.$this->local_cObj->enableFields( 'tx_rtgfiles_files' );
+		$res = $GLOBALS['TYPO3_DB']->exec_SELECTquery( 'uid,file,url,clicks', 'tx_rtgfiles_files', $where );
 		if( $res ) {
 			if( $this->file = $GLOBALS['TYPO3_DB']->sql_fetch_assoc( $res ) ) {
 				if( file_exists( $this->filesPath.$this->file['file'] ) ) {
@@ -212,8 +213,7 @@ class tx_rtgfiles_pi1 extends tslib_pibase {
 						AND tx_rtgfiles_systems.hidden = 0
 						AND tx_rtgfiles_systems.deleted = 0 )
  			WHERE tx_rtgfiles_files.pid IN ( '.$this->pid.' )
-				AND tx_rtgfiles_files.hidden = 0
-				AND tx_rtgfiles_files.deleted = 0
+				'.$this->local_cObj->enableFields( 'tx_rtgfiles_files' ).'
 				'.$whereAnd.'
 			ORDER BY tx_rtgfiles_files.sorting
 		';

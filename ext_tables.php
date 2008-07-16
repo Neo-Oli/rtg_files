@@ -13,16 +13,17 @@ $TCA["tx_rtgfiles_files"] = Array (
 		'tstamp' => 'tstamp',
 		'crdate' => 'crdate',
 		'cruser_id' => 'cruser_id',
-		"sortby" => "sorting",	
-		"delete" => "deleted",	
-		"enablecolumns" => Array (		
-			"disabled" => "hidden",
+		'sortby' => 'sorting',	
+		'delete' => 'deleted',	
+		'enablecolumns' => Array (		
+			'disabled' => 'hidden',
+			'fe_group' => 'fe_group',
 		),
 		"dynamicConfigFile" => t3lib_extMgm::extPath($_EXTKEY)."tca.php",
 		"iconfile" => t3lib_extMgm::extRelPath($_EXTKEY).'tx_rtgfiles_files.gif',
 	),
 	"feInterface" => Array (
-		"fe_admin_fieldList" => "hidden, title, system, description, keywords, file, clicks",
+		"fe_admin_fieldList" => "hidden, fe_group, title, system, description, keywords, file, clicks",
 	)
 );
 

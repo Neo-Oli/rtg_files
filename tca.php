@@ -4,7 +4,7 @@ if (!defined ('TYPO3_MODE')) 	die ('Access denied.');
 $TCA["tx_rtgfiles_files"] = Array (
 	"ctrl" => $TCA["tx_rtgfiles_files"]["ctrl"],
 	"interface" => Array (
-		"showRecordFieldList" => "hidden,title,system,description,keywords,file"
+		"showRecordFieldList" => "hidden,fe_group,title,system,description,keywords,file"
 	),
 	"feInterface" => $TCA["tx_rtgfiles_files"]["feInterface"],
 	"columns" => Array (
@@ -14,6 +14,24 @@ $TCA["tx_rtgfiles_files"] = Array (
 			"config" => Array (
 				"type" => "check",
 				"default" => "0"
+			)
+		),
+		'fe_group' => array (        
+			'exclude' => 1,
+			'l10n_mode' => 'mergeIfNotBlank',
+			'label'   => 'LLL:EXT:lang/locallang_general.xml:LGL.fe_group',
+			'config'  => array (
+				'type'  => 'select',
+				'size' => 5,
+				'maxitems' => 20,
+				'items' => array (
+					array('', 0),
+					array('LLL:EXT:lang/locallang_general.xml:LGL.hide_at_login', -1),
+					array('LLL:EXT:lang/locallang_general.xml:LGL.any_login', -2),
+					array('LLL:EXT:lang/locallang_general.xml:LGL.usergroups', '--div--')
+				),
+				'exclusiveKeys' => '-1,-2',
+				'foreign_table' => 'fe_groups'
 			)
 		),
 		"title" => Array (		
@@ -108,10 +126,10 @@ $TCA["tx_rtgfiles_files"] = Array (
         ),
 	),
 	"types" => Array (
-		"0" => Array("showitem" => "hidden;;1;;1-1-1, title;;;;2-2-2, system;;;;3-3-3, description;;;richtext[paste|bold|italic|underline|formatblock|class|left|center|right|orderedlist|unorderedlist|outdent|indent|link|image]:rte_transform[mode=ts], keywords, file, url, clicks;;;;4-4-4")
+		"0" => Array("showitem" => "hidden;;1;;1-1-1, title;;;;2-2-2, system;;;;3-3-3, description;;;richtext[paste|bold|italic|underline|formatblock|class|left|center|right|orderedlist|unorderedlist|outdent|indent|link|image]:rte_transform[mode=ts], keywords, file, url, fe_group;;;;4-4-4")
 	),
 	"palettes" => Array (
-		"1" => Array("showitem" => "")
+		"1" => Array("showitem" => "clicks")
 	)
 );
 
