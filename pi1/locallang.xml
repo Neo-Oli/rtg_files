@@ -10,6 +10,7 @@
 			<label index="submit_button_label">Search</label>
 			<label index="error_word">Search word must include min two characters.</label>
 			<label index="empty_list">No files.</label>
+			<label index="view">view source</label>
 			<label index="tx_rtgfiles_files">Files</label>
 			<label index="tx_rtgfiles_files.date">Upload date</label>
 			<label index="tx_rtgfiles_files.title">Title</label>
@@ -31,6 +32,7 @@
 			<label index="submit_button_label">Hľadaj</label>
 			<label index="error_word">Výraz musí mať minimálne dva znaky.</label>
 			<label index="empty_list">Žiadne dokumenty ani odkazy k tejto stránke.</label>
+			<label index="view">ukáž obsah súboru</label>
 			<label index="tx_rtgfiles_files">Dokumenty</label>
 			<label index="tx_rtgfiles_files.date">Dátum zverejnenia</label>
 			<label index="tx_rtgfiles_files.title">Názov</label>

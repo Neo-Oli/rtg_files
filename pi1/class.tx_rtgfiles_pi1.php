@@ -60,6 +60,10 @@ class tx_rtgfiles_pi1 extends tslib_pibase {
 	var $extKey = 'rtg_files';
 	var $pi_checkCHash = TRUE;
 
+	// Classes
+	var $local_cObj = false;
+	var $geshi = false;
+
 	var $conf;
 	var $GPvars;
 	var $filesPath = 'uploads/tx_rtgfiles/';
@@ -85,7 +89,7 @@ class tx_rtgfiles_pi1 extends tslib_pibase {
 		$this->conf = $conf;
 		$this->pi_setPiVarDefaults();
 		$this->pi_loadLL();
-		$GLOBALS["TSFE"]->set_no_cache();
+		$GLOBALS['TSFE']->set_no_cache();
 		$this->local_cObj = t3lib_div::makeInstance('tslib_cObj');
 		$this->GPvars = t3lib_div::GPvar( 'tx_rtgfiles_pi1' );
 
@@ -93,6 +97,7 @@ class tx_rtgfiles_pi1 extends tslib_pibase {
 		$this->id = $GLOBALS['TSFE']->id;
 		$this->pid = $this->conf['pidrootpage'] > 0 ? $this->conf['pidrootpage']: $this->id;
         $this->pid = $this->pi_getPidList( $this->pid, $this->conf['recursive'] );
+		$this->pidView = $this->conf['pidview'] > 0 ? intval( $this->conf['pidview'] ): $this->id;
 		$this->totalTemplate = $this->cObj->fileResource( $this->conf['template'] );
 		$this->wrapErrors = $this->conf['wrapErrorMessages'] ? $this->conf['wrapErrorMessages']: '|';
 
@@ -100,7 +105,10 @@ class tx_rtgfiles_pi1 extends tslib_pibase {
 		if( $this->GPvars['cmd'] == 'DOWNLOAD' && $this->GPvars['uid'] > 0 ) {
 			$this->download( intval( $this->GPvars['uid'] ) );
 		}
-
+		elseif( $this->GPvars['cmd'] == 'VIEW' && $this->GPvars['uid'] > 0 ) {
+			$content = $this->view( intval( $this->GPvars['uid'] ) );
+			return $this->pi_wrapInBaseClass( $content );
+		}
 		// Form is submitted
 		elseif( $_POST['submit'] ) {
 			// Form data validation
@@ -185,6 +193,39 @@ class tx_rtgfiles_pi1 extends tslib_pibase {
 					header( "Content-Length: ".filesize( $this->filesPath.$this->file['file'] ) );
 					readfile( $this->filesPath.$this->file['file'] );
 					exit;
+				}
+			}
+		}
+		return false;
+	}
+
+	/**
+	 * View source file
+	 *
+	 * @param	int		$uid:
+	 * @return	void
+	 */
+	function view( $uid ) {
+
+		$where = 'uid = '.$uid.' '.$this->local_cObj->enableFields( 'tx_rtgfiles_files' );
+		$res = $GLOBALS['TYPO3_DB']->exec_SELECTquery( 'uid,file,url,clicks', 'tx_rtgfiles_files', $where );
+		if( $res ) {
+			if( $this->file = $GLOBALS['TYPO3_DB']->sql_fetch_assoc( $res ) ) {
+				if( file_exists( $this->filesPath.$this->file['file'] ) ) {
+
+					// File information
+					$file = explode( '.', $this->file['file'] );
+					$extPos = count( $file ) - 1;
+					$fileContent = @file_get_contents( $this->filesPath.$this->file['file'] );
+
+					// Source highligting (by geshilib)
+					if( isset( $this->conf['types.'][$file[$extPos].'.']['view'] ) ) {
+						require_once( t3lib_extMgm::siteRelPath( 'geshilib' ).'res/geshi.php' );
+						$this->geshi = new Geshi( $fileContent, $this->conf['types.'][$file[$extPos].'.']['view'], '' );
+						$this->geshi->enable_line_numbers( GESHI_NORMAL_LINE_NUMBERS, 1 );
+						return $this->geshi->parse_code();
+					}
+					return '<pre>'.$fileContent.'</pre>';
 				}
 			}
 		}
@@ -371,7 +412,7 @@ class tx_rtgfiles_pi1 extends tslib_pibase {
 						// Link to download script
 						$params = array(
 							$this->prefixId.'[cmd]' => 'DOWNLOAD',
-							$this->prefixId.'[uid]' => intval( $itemF['uid'] ),
+							$this->prefixId.'[uid]' => intval( $itemF['uid'] )
 						);
 						$link = '<a href="'.str_replace( '&', '&amp;', $this->pi_getPageLink( $this->id, '_self', $params ) ).'" target="_self">';
 						$wrappedSubpart['###FILE_DOWNLOAD###'] = array( $link, '</a>' );
@@ -390,6 +431,21 @@ class tx_rtgfiles_pi1 extends tslib_pibase {
 						$link = '<a href="'.str_replace( '&', '&amp;', $this->pi_getPageLink( $this->id, '_self', $params ) ).'" target="_self">';
 						$wrappedSubpart['###FILE_DOWNLOAD###'] = array( $link, '</a>' );
 					}
+					
+					// Link - view source
+					if( isset( $this->conf['types.'][$file[$extPos].'.']['view'] ) ) {
+						$submarks['###VIEW###'] = $this->pi_getLL( 'view' );
+						$params = array(
+							$this->prefixId.'[cmd]' => 'VIEW',
+							$this->prefixId.'[uid]' => intval( $itemF['uid'] )
+						);
+						$link = '<a href="'.str_replace( '&', '&amp;', $this->pi_getPageLink( $this->pidView, '_top', $params ) ).'" target="_top">';
+						$wrappedSubpart['###LINK_VIEW###'] = array( $link, '</a>' );
+					}
+					else {
+						$subsubparts['###VIEW_BOX###'] = '';
+					}
+					
 					$content_row .= $this->cObj->substituteMarkerArrayCached( $template['files'], $submarks, $subsubparts, $wrappedSubpart );
 				}
 			}

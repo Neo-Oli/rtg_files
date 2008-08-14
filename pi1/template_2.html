@@ -14,6 +14,7 @@
 	Subparts:
 		###FILES_LIST_ITEM### - one file item block
 		###SIZE_BOX### - disabled in URL link type
+		###VIEW_BOX###
 	Marks:
 		###TITLE###
 		###DESCRIPTION###
@@ -21,6 +22,7 @@
 		###SIZE### - readable size of file
 		###CLICKS### - clicks counter
 		###TSTAMP### - create datetime
+		###VIEW###
 	Wrapped subparts:
 		###FILE_NAME### - file name
 		###FILE_LINK### - direct link to file/URl
@@ -47,7 +49,9 @@
 		<!-- ###FILES_LIST_ITEM### begin -->
 			<tr>
 				<td rowspan="3">###TYPE_IMAGE###</td>
-				<td colspan="2"><!-- ###FILE_DOWNLOAD### --><strong>###TITLE###</strong><!-- ###FILE_DOWNLOAD### --></td>
+				<td colspan="2">
+					<!-- ###FILE_DOWNLOAD### --><strong>###TITLE###</strong><!-- ###FILE_DOWNLOAD### --><!-- ###VIEW_BOX### -->, <!-- ###LINK_VIEW### -->###VIEW###<!-- ###LINK_VIEW### --><!-- ###VIEW_BOX### -->
+				</td>
 			</tr>
 			<tr>
 				<td colspan="2" class="fileDescription">###DESCRIPTION###</td>

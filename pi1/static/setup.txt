@@ -79,6 +79,7 @@ plugin.tx_rtgfiles_pi1 {
     xml {
       title = XML file
       image = xml.gif
+      view = xml
     } 
     ser {
       title = Language translation XML/SER
@@ -95,6 +96,7 @@ plugin.tx_rtgfiles_pi1 {
     php {
       title = PHP source
       image = php3.gif
+      view = php
     }     
     inc {
       title = PHP source
