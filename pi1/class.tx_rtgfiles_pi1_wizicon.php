@@ -2,7 +2,7 @@
 /***************************************************************
 *  Copyright notice
 *
-*  (c) 2007 robert gonda <robert@magnetica.sk>
+*  (c) 2007-2013 robert gonda <robert@magnetica.sk>
 *  All rights reserved
 *
 *  This script is part of the TYPO3 project. The TYPO3 project is
@@ -22,9 +22,6 @@
 *  This copyright notice MUST APPEAR in all copies of the script!
 ***************************************************************/
 
-
-
-
 /**
  * Class that adds the wizard icon.
  *
@@ -34,41 +31,44 @@
  */
 class tx_rtgfiles_pi1_wizicon {
 
-					/**
-					 * Processing the wizard items array
-					 *
-					 * @param	array		$wizardItems: The wizard items
-					 * @return	Modified array with wizard items
-					 */
-					function proc($wizardItems)	{
-						global $LANG;
+	/**
+	 * Processing the wizard items array
+	 *
+	 * @param	array		$wizardItems: The wizard items
+	 * @return	Modified array with wizard items
+	 */
+	function proc($wizardItems)	{
+		global $LANG;
 
-						$LL = $this->includeLocalLang();
+		$LL = $this->includeLocalLang();
 
-						$wizardItems['plugins_tx_rtgfiles_pi1'] = array(
-							'icon'=>t3lib_extMgm::extRelPath('rtg_files').'pi1/ce_wiz.gif',
-							'title'=>$LANG->getLLL('pi1_title',$LL),
-							'description'=>$LANG->getLLL('pi1_plus_wiz_description',$LL),
-							'params'=>'&defVals[tt_content][CType]=list&defVals[tt_content][list_type]=rtg_files_pi1'
-						);
+		$wizardItems['plugins_tx_rtgfiles_pi1'] = array(
+			'icon'=>t3lib_extMgm::extRelPath('rtg_files').'pi1/ce_wiz.gif',
+			'title'=>$LANG->getLLL('pi1_title',$LL),
+			'description'=>$LANG->getLLL('pi1_plus_wiz_description',$LL),
+			'params'=>'&defVals[tt_content][CType]=list&defVals[tt_content][list_type]=rtg_files_pi1'
+		);
 
-						return $wizardItems;
-					}
+		return $wizardItems;
+	}
 
-					/**
-					 * Reads the [extDir]/locallang.xml and returns the \$LOCAL_LANG array found in that file.
-					 *
-					 * @return	The array with language labels
-					 */
-					function includeLocalLang()	{
-						$llFile = t3lib_extMgm::extPath(rtg_files).'locallang.xml';
-						$LOCAL_LANG = t3lib_div::readLLXMLfile($llFile, $GLOBALS['LANG']->lang);
-						
-						return $LOCAL_LANG;
-					}
-				}
+	/**
+	 * Reads the [extDir]/locallang.xml and returns the \$LOCAL_LANG array found in that file.
+	 *
+	 * @return	The array with language labels
+	 */
+	function includeLocalLang()	{
 
-
+		$version = class_exists( 't3lib_utility_VersionNumber' ) ? t3lib_utility_VersionNumber::convertVersionNumberToInteger( TYPO3_version ) : t3lib_div::int_from_ver( TYPO3_version );
+		if( $version >= 6000000 ) {
+			$LOCAL_LANG = \TYPO3\CMS\Core\Utility\GeneralUtility::readLLfile( \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::extPath( 'rtg_files' ).'locallang.xml', $GLOBALS['LANG']->lang );
+		} else {
+			$llFile = t3lib_extMgm::extPath( 'rtg_files' ).'locallang.xml';
+			$LOCAL_LANG = t3lib_div::readLLXMLfile( $llFile, $GLOBALS['LANG']->lang );
+		}		
+		return $LOCAL_LANG;
+	}
+}
 
 if (defined('TYPO3_MODE') && $TYPO3_CONF_VARS[TYPO3_MODE]['XCLASS']['ext/rtg_files/pi1/class.tx_rtgfiles_pi1_wizicon.php'])	{
 	include_once($TYPO3_CONF_VARS[TYPO3_MODE]['XCLASS']['ext/rtg_files/pi1/class.tx_rtgfiles_pi1_wizicon.php']);
