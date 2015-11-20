@@ -1,2 +1,1 @@
-
-Feel free to add some documentation or simply add a link to the online manual.
+Working version of rtg_files for Typo3 > 6.0
